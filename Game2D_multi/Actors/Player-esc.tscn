@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://noBKG_KnightIdle_strip.png" type="Texture" id=1]
 [ext_resource path="res://noBKG_KnightAttack_strip.png" type="Texture" id=2]
 [ext_resource path="res://noBKG_KnightDeath_strip.png" type="Texture" id=3]
 [ext_resource path="res://noBKG_KnightRun_strip.png" type="Texture" id=4]
 [ext_resource path="res://noBKG_KnightShield_strip.png" type="Texture" id=5]
+[ext_resource path="res://Player-esc.gd" type="Script" id=6]
 
 [sub_resource type="Animation" id=3]
 resource_name = "Attack"
@@ -155,9 +156,10 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 22, 30 )
+extents = Vector2( 24, 30 )
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 6 )
 
 [node name="Sprite_Idle" type="Sprite" parent="."]
 visible = false
@@ -183,6 +185,9 @@ position = Vector2( 1, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 hframes = 22
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite3_shield" type="Sprite" parent="."]
 visible = false
@@ -194,9 +199,14 @@ __meta__ = {
 }
 
 [node name="Sprite2_run" type="Sprite" parent="."]
+position = Vector2( 189, 87 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
+flip_h = true
 hframes = 8
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 3.0
@@ -208,7 +218,7 @@ anims/Run = SubResource( 5 )
 anims/Shield = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 4, -7 )
+position = Vector2( 184, 82 )
 shape = SubResource( 7 )
 __meta__ = {
 "_edit_group_": true
