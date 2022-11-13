@@ -72,17 +72,15 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 37.5 )
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
-position = Vector2( 476, 334 )
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 402, 312 )
 script = ExtResource( 40 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "Run"
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2, 10.5 )

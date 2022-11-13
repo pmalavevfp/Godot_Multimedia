@@ -1,45 +1,43 @@
 extends KinematicBody2D
  
-const ACCELERATION = 70
-const MAX_SPEED = 300
-const JUMP_H = -900
 const UP = Vector2(0, -1)
-const gravity = 40
- 
-onready var sprite = $AnimatedSprite
-onready var animationPlayer = $AnimatedSprite
- 
+const ACC = 50
+const GRAVITY = 20
+const SPEED = 200
+const JUMP_HEIGHT =  -650
 var motion = Vector2()
- 
-func _physics_process(delta):
-	# apply gravity to the player
-	motion.y += gravity
-	var friction = false
- 
+
+onready var animationPlayer = $AnimatedSprite
+
+func _physics_process(delta): 
+	motion.y += GRAVITY
+
 	if Input.is_action_pressed("ui_right"):
-		sprite.flip_h = false
-		animationPlayer.play("Run")
-		motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
-	elif Input.is_action_pressed("ui_left"):
-		animationPlayer.play("Run")
-		sprite.flip_h = true
-		motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
-	elif Input.is_action_pressed("ui_up"):
-		animationPlayer.play("Run")
-		sprite.flip_h = true
-		motion.y = max(motion.y - ACCELERATION, -MAX_SPEED)
+		animationPlayer.flip_h = false
+		animationPlayer.play("run")
+		motion.x = min(motion.x + ACC, SPEED)
+	elif he_goes_left():
+		animationPlayer.flip_h = true
+		animationPlayer.play("run")
+		motion.x = max(motion.x - ACC, -SPEED)
 	else:
-		animationPlayer.play("Idle")
-		friction = true
- 
-	if is_on_floor():
- 
-		if Input.is_action_just_pressed("ui_accept"):
-			motion.y = JUMP_H
-		if friction == true:
-			motion.x = lerp(motion.x, 0, 0.5)
+		animationPlayer.play("Idle") 
+		motion.x = lerp(motion.x, 0, 0.2)
+
+	if is_on_floor(): 
+		if Input.is_action_just_pressed("ui_up"):
+			jump()
 	else:
-		if friction == true:
-			motion.x = lerp(motion.x, 0, 0.01)
+		animationPlayer.play("jump")
+
+	motion = move_and_slide(motion, UP)
+
+func he_goes_right():
+	return Input.get_action_strength("ui_right")
+
+func he_goes_left():
+	return Input.get_action_strength("ui_left")
+
+func jump():
+	motion.y = JUMP_HEIGHT
  
-	
