@@ -7,6 +7,3 @@ func _on_Area2D_body_entered(body):
 		#body.contadorMonedas += 1
 		#print(body.contadorMonedas)
 		queue_free()
-	
-	
-	
