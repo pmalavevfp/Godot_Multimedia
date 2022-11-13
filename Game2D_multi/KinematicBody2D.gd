@@ -14,11 +14,11 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("ui_right"):
 		animationPlayer.flip_h = false
-		animationPlayer.play("run")
+		animationPlayer.play("Run")
 		motion.x = min(motion.x + ACC, SPEED)
 	elif he_goes_left():
 		animationPlayer.flip_h = true
-		animationPlayer.play("run")
+		animationPlayer.play("Run")
 		motion.x = max(motion.x - ACC, -SPEED)
 	else:
 		animationPlayer.play("Idle") 
@@ -28,7 +28,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("ui_up"):
 			jump()
 	else:
-		animationPlayer.play("jump")
+		animationPlayer.play(" Jump")
 
 	motion = move_and_slide(motion, UP)
 
