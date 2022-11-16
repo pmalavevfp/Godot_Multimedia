@@ -39,7 +39,7 @@
 [ext_resource path="res://Actors/Hero Knight/Sprites/HeroKnight/BlockNoEffect/HeroKnight_BlockNoEffect_1.png" type="Texture" id=37]
 [ext_resource path="res://Actors/Hero Knight/Sprites/HeroKnight/BlockNoEffect/HeroKnight_BlockNoEffect_2.png" type="Texture" id=38]
 [ext_resource path="res://Actors/Hero Knight/Sprites/HeroKnight/BlockNoEffect/HeroKnight_BlockNoEffect_3.png" type="Texture" id=39]
-[ext_resource path="res://KinematicBody2D.gd" type="Script" id=40]
+[ext_resource path="res://script/Player.gd" type="Script" id=40]
 [ext_resource path="res://Actors/Hero Knight/Sprites/HeroKnight/Jump/HeroKnight_Jump_0.png" type="Texture" id=41]
 [ext_resource path="res://Actors/Hero Knight/Sprites/HeroKnight/Jump/HeroKnight_Jump_2.png" type="Texture" id=42]
 [ext_resource path="res://Actors/Hero Knight/Sprites/HeroKnight/Jump/HeroKnight_Jump_1.png" type="Texture" id=43]
@@ -80,8 +80,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 37.5 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" groups=["player"]]
+[node name="Player" type="KinematicBody2D" groups=["player"]]
 position = Vector2( 476, 334 )
+collision_layer = 2
 script = ExtResource( 40 )
 __meta__ = {
 "_edit_group_": true
@@ -95,3 +96,11 @@ animation = "Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2, 10.5 )
 shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_bottom = 0.1
+editor_draw_limits = true
+editor_draw_drag_margin = true
