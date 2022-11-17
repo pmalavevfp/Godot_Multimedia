@@ -10,5 +10,6 @@ func _on_Lever_body_shape_entered(body_rid, body, body_shape_index, local_shape_
 	if body.is_in_group("player"):
 		$AnimatedSprite.play ("Open")
 		$AudioStreamPlayer.play()
-		Global.door +=1
-		print(str(Global.door))
+		yield(get_tree().create_timer(0.3),"timeout")
+		Global.count_door+=1
+		#print(str(Global.door))

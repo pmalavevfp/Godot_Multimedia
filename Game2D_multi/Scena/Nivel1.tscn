@@ -6,6 +6,7 @@
 [ext_resource path="res://Asset/Objects/shield.png" type="Texture" id=4]
 [ext_resource path="res://Asset/Objects/torch.png" type="Texture" id=5]
 [ext_resource path="res://Asset/Door_1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scena/Heart.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scena/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Asset/Tiles/tile141.png" type="Texture" id=9]
 [ext_resource path="res://Asset/Tiles/tile144.png" type="Texture" id=10]
@@ -17,7 +18,6 @@
 [ext_resource path="res://keys/keys_1_1.png" type="Texture" id=16]
 [ext_resource path="res://Keys.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Scena/Chest.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Scena/Lifes_Bar.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scena/Skeleton.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scena/Lever.tscn" type="PackedScene" id=21]
 
@@ -210,6 +210,9 @@ texture = ExtResource( 3 )
 [node name="Count_Coins_keys" type="CanvasLayer" parent="."]
 script = ExtResource( 14 )
 
+[node name="Heart" parent="Count_Coins_keys" instance=ExtResource( 7 )]
+position = Vector2( -1, -1 )
+
 [node name="Sprite" type="Sprite" parent="Count_Coins_keys"]
 position = Vector2( 51, 46 )
 scale = Vector2( 2, 2 )
@@ -238,7 +241,7 @@ margin_top = 63.0
 margin_right = 105.0
 margin_bottom = 84.0
 custom_fonts/font = SubResource( 5 )
-text = "hola"
+text = "0"
 align = 1
 
 [node name="Coins" parent="." instance=ExtResource( 15 )]
@@ -285,8 +288,6 @@ position = Vector2( 365, 529 )
 
 [node name="Lever" parent="." instance=ExtResource( 21 )]
 position = Vector2( 425, 519 )
-
-[node name="Lifes_Bar" parent="." instance=ExtResource( 19 )]
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 8 )]
 position = Vector2( 95, 513 )

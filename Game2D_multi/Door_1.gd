@@ -1,13 +1,14 @@
 extends Area2D
 
 func _process(delta):
-	if Global.door==1:
+	if Global.count_door==1:
 		$AnimatedSprite.play("Close")
 		$CollisionShape2D.disabled=true
 		#$CollisionShape2d.disabled=true
-	elif Global.door >=2:
-		$AnimatedSprite.play("Open")
+	elif Global.count_door >=2:
 		$AudioStreamPlayer.play()
+		yield(get_tree().create_timer(0.3),"timeout")
+		$AnimatedSprite.play("Open")
 		$CollisionShape2D.disabled=false
 		#$CollisionShape2d.disabled=false
 

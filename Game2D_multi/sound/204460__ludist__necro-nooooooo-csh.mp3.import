@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/204460__ludist__necro-nooooooo-csh.mp3-fca0ce60c035740bd45a52dbe1225c6a.mp3str"
+
+[deps]
+
+source_file="res://sound/204460__ludist__necro-nooooooo-csh.mp3"
+dest_files=[ "res://.import/204460__ludist__necro-nooooooo-csh.mp3-fca0ce60c035740bd45a52dbe1225c6a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

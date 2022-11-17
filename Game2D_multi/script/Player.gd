@@ -12,27 +12,31 @@ var health : int = 100
 onready var animationPlayer = $AnimatedSprite
 
 func _physics_process(delta): 
-	motion.y += GRAVITY
-
-	if Input.is_action_pressed("ui_right"):
-		animationPlayer.flip_h = false
-		animationPlayer.play("Run")
-		motion.x = min(motion.x + ACC, SPEED)
-	elif he_goes_left():
-		animationPlayer.flip_h = true
-		animationPlayer.play("Run")
-		motion.x = max(motion.x - ACC, -SPEED)
+	
+	if Global.count_lives<=0:
+		$animatedSprite.Death
 	else:
-		animationPlayer.play("Idle") 
-		motion.x = lerp(motion.x, 0, 0.2)
+		motion.y += GRAVITY
 
-	if is_on_floor(): 
-		if Input.is_action_just_pressed("ui_up"):
-			jump()
-	else:
-		animationPlayer.play(" Jump")
+		if Input.is_action_pressed("ui_right"):
+			animationPlayer.flip_h = false
+			animationPlayer.play("Run")
+			motion.x = min(motion.x + ACC, SPEED)
+		elif he_goes_left():
+			animationPlayer.flip_h = true
+			animationPlayer.play("Run")
+			motion.x = max(motion.x - ACC, -SPEED)
+		else:
+			animationPlayer.play("Idle") 
+			motion.x = lerp(motion.x, 0, 0.2)
 
-	motion = move_and_slide(motion, UP)
+		if is_on_floor(): 
+			if Input.is_action_just_pressed("ui_up"):
+				jump()
+		else:
+			animationPlayer.play(" Jump")
+
+		motion = move_and_slide(motion, UP)
 
 func he_goes_right():
 	return Input.get_action_strength("ui_right")
@@ -48,3 +52,9 @@ func damage_player (damage):
 	
 
  
+
+
+func _on_AnimatedSprite_animation_finished():
+	#if $AnimatedSprite.animation == "Death"
+		#queue_free ()
+	pass
