@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Asset/Objects/lever1.png" type="Texture" id=1]
 [ext_resource path="res://Asset/Objects/lever2.png" type="Texture" id=2]
 [ext_resource path="res://script/Lever.gd" type="Script" id=3]
+[ext_resource path="res://sound/264151__reitanna__microwave-door-open1.wav" type="AudioStream" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -27,11 +28,15 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "Close"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.5, -1 )
 shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="body_shape_entered" from="." to="." method="_on_Lever_body_shape_entered"]
