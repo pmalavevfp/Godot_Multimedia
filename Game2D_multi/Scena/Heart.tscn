@@ -64,8 +64,8 @@ animations = [ {
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 109, 20 )
-scale = Vector2( 2.03125, 2 )
+position = Vector2( 89, 16 )
+scale = Vector2( 3, 3 )
 frames = SubResource( 6 )
 animation = "heart100"
 centered = false

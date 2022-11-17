@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Asset/Tiles/tile22.png" type="Texture" id=1]
 [ext_resource path="res://Asset/Tiles/tile64.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://coin/coin_1.png" type="Texture" id=9]
 [ext_resource path="res://CanvasLayer_Coins.gd" type="Script" id=10]
 [ext_resource path="res://Scena/Coins.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scena/Heart.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 48, 0, 48, 48, 0, 48 )
@@ -142,6 +143,9 @@ font_data = ExtResource( 7 )
 [sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 7 )
 
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 7 )
+
 [node name="Nivel2" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -156,8 +160,14 @@ position = Vector2( 778, 560 )
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 83, 568 )
 
+[node name="Coins" parent="." instance=ExtResource( 11 )]
+position = Vector2( 470, 586 )
+
 [node name="Count_Coins_keys" type="CanvasLayer" parent="."]
 script = ExtResource( 10 )
+
+[node name="Heart" parent="Count_Coins_keys" instance=ExtResource( 12 )]
+position = Vector2( -1, -1 )
 
 [node name="Sprite" type="Sprite" parent="Count_Coins_keys"]
 position = Vector2( 51, 46 )
@@ -187,8 +197,13 @@ margin_top = 63.0
 margin_right = 105.0
 margin_bottom = 84.0
 custom_fonts/font = SubResource( 6 )
-text = "hola"
+text = "0"
 align = 1
 
-[node name="Coins" parent="." instance=ExtResource( 11 )]
-position = Vector2( 470, 586 )
+[node name="Label3" type="Label" parent="Count_Coins_keys"]
+margin_left = 117.0
+margin_top = 59.0
+margin_right = 157.0
+margin_bottom = 73.0
+custom_fonts/font = SubResource( 7 )
+text = "100"

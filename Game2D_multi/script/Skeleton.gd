@@ -6,13 +6,22 @@ const UP = Vector2(0, -1)
 const GRAVITY = 20
 const SPEED = 40
 
+var lives=0
+
 var motion = Vector2()
 
 func _ready():
 	$AnimatedSprite.scale.x = 1
 	motion.x = SPEED
 	
+func _process(_delta):
+	hit()
+	
 func _physics_process(_delta):
+	
+	if lives <=0:
+		$AnimatedSprite.play("Death")
+	
 	motion.y += GRAVITY
 	_move()
 
@@ -44,7 +53,18 @@ func _move():
 	if _next_to_right_wall() or _next_to_left_wall() or !_floor_detection():
 		_flip()
 
+func hit ():
+	pass
+
+
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.play("Death"):
+		queue_free()
+	pass # Replace with function body.
 
 
 
-
+func _on_damage_body_entered(body):
+	if body.is_in_group ("hit"):
+		lives -=1
+	pass # Replace with function body.
