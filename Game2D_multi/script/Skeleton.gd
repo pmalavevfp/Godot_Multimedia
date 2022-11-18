@@ -27,16 +27,11 @@ func _physics_process(_delta):
 
 	motion = move_and_slide(motion)
 	
-
-	
 func _next_to_left_wall()->bool:
-	
 	#print ("l" +str($Left_Ray.is_colliding()))
 	return $Left_Ray.is_colliding()
 	
 func _next_to_right_wall()->bool:
-	
-	
 	#print (str($Right_Ray.is_colliding()))
 	return $Right_Ray.is_colliding()
 	
@@ -44,7 +39,6 @@ func _floor_detection ()->bool:
 	#print ("FF"+str($AnimatedSprite/Floor_Detection.is_colliding()))
 	return $AnimatedSprite/Floor_Detection.is_colliding()
 	
-
 func _flip():
 	motion.x *= -1
 	$AnimatedSprite.scale.x *= -1
@@ -56,13 +50,11 @@ func _move():
 func hit ():
 	pass
 
-
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.play("Death"):
+		yield(get_tree().create_timer(0.3),"timeout")
 		queue_free()
 	pass # Replace with function body.
-
-
 
 func _on_damage_body_entered(body):
 	if body.is_in_group ("hit"):

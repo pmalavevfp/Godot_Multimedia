@@ -65,9 +65,7 @@ __meta__ = {
 position = Vector2( 31, -49 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
-animation = "Walk"
-frame = 5
-playing = true
+animation = "Idle"
 
 [node name="Floor_Detection" type="RayCast2D" parent="AnimatedSprite"]
 position = Vector2( 7.33333, 0.333334 )
@@ -88,7 +86,7 @@ position = Vector2( 32, -49 )
 enabled = true
 cast_to = Vector2( 38, 0 )
 
-[node name="damage" type="Area2D" parent="."]
+[node name="damage" type="Area2D" parent="." groups=["damage"]]
 position = Vector2( 31, -49 )
 rotation = 0.00569654
 scale = Vector2( 3, 3 )
@@ -96,6 +94,12 @@ scale = Vector2( 3, 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
 position = Vector2( -1, 2 )
 shape = SubResource( 3 )
+
+[node name="Att_R_ray" type="RayCast2D" parent="."]
+collision_mask = 2
+
+[node name="Att_L_ray" type="RayCast2D" parent="."]
+collision_mask = 2
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]

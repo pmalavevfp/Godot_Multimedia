@@ -14,7 +14,7 @@ var health : int = 100
 onready var animationPlayer = $AnimatedSprite
 
 func _physics_process(delta): 
-	
+	motion.y += GRAVITY
 	
 	if Global.count_lives<=0:
 		$animatedSprite.Death
@@ -23,16 +23,17 @@ func _physics_process(delta):
 		if Input.is_action_pressed("Attack_R"):
 			animationPlayer.flip_h=false
 			$AnimatedSprite.play("Attack")
-			attack=true
+			motion.x = min(motion.x + ACC, SPEED)
+			#attack=true
 			
 		elif Input.is_action_pressed("Attack_L"):
 			animationPlayer.play("Attack")
 			animationPlayer.flip_h=true
-			attack=true
+			#attack=true
+			
 		
-		motion.y += GRAVITY
-
-		if Input.is_action_pressed("ui_right") :
+		
+		elif Input.is_action_pressed("ui_right") :
 			animationPlayer.flip_h = false
 			animationPlayer.play("Run")
 			motion.x = min(motion.x + ACC, SPEED)
@@ -67,9 +68,6 @@ func jump():
 func damage_player (damage):
 	health -=damage
 	
-
- 
-
 
 func _on_AnimatedSprite_animation_finished():
 	if animationPlayer.animation=="Attack":

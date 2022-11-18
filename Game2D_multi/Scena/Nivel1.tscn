@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Asset/Tiles/tile22.png" type="Texture" id=1]
 [ext_resource path="res://Asset/Tiles/tile10.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Scena/gain_lives.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scena/Skeleton.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scena/Lever.tscn" type="PackedScene" id=21]
+[ext_resource path="res://sound/185099__nicolasdrweski__notes-graves.wav" type="AudioStream" id=22]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 48, 0, 48, 48, 0, 48 )
@@ -278,10 +279,10 @@ position = Vector2( 582, 542 )
 position = Vector2( 687, 540 )
 
 [node name="Coins7" parent="." instance=ExtResource( 15 )]
-position = Vector2( 669, 265 )
+position = Vector2( 680, 237 )
 
 [node name="Coins8" parent="." instance=ExtResource( 15 )]
-position = Vector2( 562, 257 )
+position = Vector2( 579, 236 )
 
 [node name="Coins9" parent="." instance=ExtResource( 15 )]
 position = Vector2( 224, 147 )
@@ -290,10 +291,10 @@ position = Vector2( 224, 147 )
 position = Vector2( 344, 156 )
 
 [node name="Coins11" parent="." instance=ExtResource( 15 )]
-position = Vector2( 829, 64 )
+position = Vector2( 810, 39 )
 
 [node name="Coins12" parent="." instance=ExtResource( 15 )]
-position = Vector2( 922, 63 )
+position = Vector2( 915, 36 )
 
 [node name="Keys" parent="." instance=ExtResource( 17 )]
 position = Vector2( 253, 527 )
@@ -316,3 +317,8 @@ position = Vector2( 939, 493 )
 
 [node name="Coins13" parent="." instance=ExtResource( 15 )]
 position = Vector2( 317, 531 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+volume_db = -10.636
+autoplay = true
