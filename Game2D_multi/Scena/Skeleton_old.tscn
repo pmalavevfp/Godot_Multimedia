@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Asset/skeleton_sword/skeleton_sword/dead_near_4.png" type="Texture" id=1]
 [ext_resource path="res://Asset/skeleton_sword/skeleton_sword/dead_near_5.png" type="Texture" id=2]
@@ -22,23 +22,12 @@
 [ext_resource path="res://Asset/skeleton_sword/skeleton_sword/walk_4.png" type="Texture" id=20]
 [ext_resource path="res://Asset/skeleton_sword/skeleton_sword/dead_near_1.png" type="Texture" id=21]
 [ext_resource path="res://script/Skeleton.gd" type="Script" id=22]
-[ext_resource path="res://Asset/skeleton_sword/skeleton_sword/attack1_3.png" type="Texture" id=23]
-[ext_resource path="res://Asset/skeleton_sword/skeleton_sword/attack1_1.png" type="Texture" id=24]
-[ext_resource path="res://Asset/skeleton_sword/skeleton_sword/attack1_5.png" type="Texture" id=25]
-[ext_resource path="res://Asset/skeleton_sword/skeleton_sword/attack1_4.png" type="Texture" id=26]
-[ext_resource path="res://Asset/skeleton_sword/skeleton_sword/attack1_6.png" type="Texture" id=27]
-[ext_resource path="res://Asset/skeleton_sword/skeleton_sword/attack1_2.png" type="Texture" id=28]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "Attack1",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 24 ), ExtResource( 28 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 27 ) ],
-"loop": true,
-"name": "Attack2",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 21 ), ExtResource( 7 ), ExtResource( 15 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 12 ) ],
@@ -58,105 +47,39 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 19.4999, 46 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 13.4156, 8.6661 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 6.49954, 33.0012 )
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 6.50001, 31.4997 )
+extents = Vector2( 24.75, 46 )
 
 [node name="Skeleton" type="KinematicBody2D" groups=["enemy"]]
-position = Vector2( -1, 0 )
-rotation = -0.000265155
 scale = Vector2( 2, 1 )
 collision_layer = 4
 script = ExtResource( 22 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." groups=["enemies"]]
-position = Vector2( 30.0065, -48.9841 )
+position = Vector2( 31, -49 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "Walk"
-frame = 1
+frame = 2
 playing = true
 
+[node name="Floor_Detection" type="RayCast2D" parent="AnimatedSprite"]
+position = Vector2( 7.33333, 0.333334 )
+enabled = true
+cast_to = Vector2( 0, 30 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 26.5053, -40 )
+position = Vector2( 26.5, -40 )
 shape = SubResource( 2 )
 
-[node name="Floor_Detection_L" type="RayCast2D" parent="CollisionShape2D"]
-visible = false
-position = Vector2( -25.4935, -8.99946 )
-scale = Vector2( 3, 3 )
-enabled = true
-cast_to = Vector2( 0, 30 )
-
-[node name="Floor_Detection_D" type="RayCast2D" parent="CollisionShape2D"]
-visible = false
-position = Vector2( 24.5064, -7.97296 )
-scale = Vector2( 3, 3 )
-enabled = true
-cast_to = Vector2( 0, 30 )
-
 [node name="Left_Ray" type="RayCast2D" parent="."]
-visible = false
 position = Vector2( 31, -49 )
 enabled = true
 cast_to = Vector2( -50, 0 )
 
 [node name="Right_Ray" type="RayCast2D" parent="."]
-visible = false
 position = Vector2( 32, -49 )
 enabled = true
 cast_to = Vector2( 38, 0 )
-
-[node name="damage" type="Area2D" parent="." groups=["damage"]]
-position = Vector2( 34.0094, -47.9649 )
-rotation = 0.00569654
-scale = Vector2( 3, 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
-position = Vector2( -2.076, 1.66914 )
-scale = Vector2( 1, 1 )
-shape = SubResource( 3 )
-
-[node name="Att_R_ray" type="RayCast2D" parent="."]
-visible = false
-position = Vector2( 31.0065, -48.9836 )
-enabled = true
-cast_to = Vector2( 40, 0 )
-collision_mask = 2
-
-[node name="Att_L_ray" type="RayCast2D" parent="."]
-visible = false
-position = Vector2( 29.5062, -46.9844 )
-enabled = true
-cast_to = Vector2( -50, 0 )
-collision_mask = 2
-
-[node name="Position2D" type="Position2D" parent="."]
-
-[node name="Hit_L" type="Area2D" parent="." groups=["hit_s"]]
-collision_layer = 2048
-collision_mask = 2304
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit_L" groups=["hit_s"]]
-position = Vector2( -19.9938, -47.0009 )
-shape = SubResource( 4 )
-
-[node name="Hit_R" type="Area2D" parent="." groups=["hit_s"]]
-collision_layer = 2048
-collision_mask = 2304
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit_R" groups=["hit_s"]]
-position = Vector2( 73.0058, -44.4594 )
-shape = SubResource( 5 )
-
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
-[connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
-[connection signal="area_entered" from="damage" to="." method="_on_damage_area_entered"]
-[connection signal="body_entered" from="damage" to="." method="_on_damage_body_entered"]

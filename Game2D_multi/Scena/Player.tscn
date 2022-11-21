@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Actors/Hero Knight/Sprites/HeroKnight/Idle/HeroKnight_Idle_4.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Hero Knight/Sprites/HeroKnight/Idle/HeroKnight_Idle_6.png" type="Texture" id=2]
@@ -81,10 +81,13 @@ animations = [ {
 extents = Vector2( 30, 37.5 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 19.5, 26 )
+extents = Vector2( 31.5, 26 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 19, 26.25 )
+extents = Vector2( 29, 26.25 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 46.5, 18.5 )
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 position = Vector2( 453, 334 )
@@ -98,8 +101,8 @@ __meta__ = {
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "Attack"
-frame = 2
 playing = true
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2, 10.5 )
@@ -115,15 +118,24 @@ editor_draw_drag_margin = true
 
 [node name="hit_R" type="Area2D" parent="." groups=["hit"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_R"]
-position = Vector2( 69.5, 0 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_R" groups=["hit"]]
+position = Vector2( 81.5, 0 )
 shape = SubResource( 3 )
 
 [node name="hit_L" type="Area2D" parent="." groups=["hit"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_L"]
-position = Vector2( -75, 0.25 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_L" groups=["hit"]]
+position = Vector2( -85, 0.25 )
 shape = SubResource( 4 )
+
+[node name="damage" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 2304
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="damage"]
+position = Vector2( -0.5, 2.5 )
+shape = SubResource( 5 )
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
+[connection signal="area_entered" from="damage" to="." method="_on_damage_area_entered"]

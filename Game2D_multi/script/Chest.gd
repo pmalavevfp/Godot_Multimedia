@@ -8,6 +8,6 @@ func _on_Chest_body_shape_entered(body_rid, body, body_shape_index, local_shape_
 	if body.is_in_group("player"):
 		$AudioStreamPlayer.play()
 		$AnimatedSprite.play ("Open")
-		get_parent().coins +=15
+		Global.count_coins +=15
 		get_node ("CollisionShape2D").queue_free()
 	

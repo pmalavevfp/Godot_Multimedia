@@ -80,7 +80,7 @@ script = ExtResource( 22 )
 position = Vector2( 30.0065, -48.9841 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
-animation = "Walk"
+animation = "Attack2"
 frame = 1
 playing = true
 
