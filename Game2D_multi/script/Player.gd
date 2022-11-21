@@ -7,13 +7,14 @@ const SPEED = 200
 const JUMP_HEIGHT =  -650
 var motion = Vector2()
 
-
+var dano=false
 var attack=false
 var health : int = 100
 
 onready var animationPlayer = $AnimatedSprite
 
 func _physics_process(delta): 
+	
 	motion.y += GRAVITY
 	
 	if Global.count_lives<=0:
@@ -94,6 +95,12 @@ func _on_AnimatedSprite_animation_finished():
 
 func _on_damage_area_entered(area):
 	if area.is_in_group ("hit_s"):
+		
 		print("XXXXXXXXXXXXXXXX")
 		Global.count_lives-=1
+		$damage/CollisionShape2D2.disabled=true
+		yield(get_tree().create_timer(0.4),"timeout")
+		$damage/CollisionShape2D2.disabled=false
+		
+		
 	pass # Replace with function body.

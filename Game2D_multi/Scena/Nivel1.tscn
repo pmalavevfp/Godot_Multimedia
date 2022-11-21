@@ -312,7 +312,7 @@ position = Vector2( 425, 519 )
 position = Vector2( 95, 513 )
 
 [node name="Skeleton" parent="." instance=ExtResource( 20 )]
-position = Vector2( 312, 541 )
+position = Vector2( 401, 549 )
 collision_mask = 7
 
 [node name="Coins13" parent="." instance=ExtResource( 15 )]
