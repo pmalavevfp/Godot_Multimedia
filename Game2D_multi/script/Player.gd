@@ -4,7 +4,7 @@ const UP = Vector2(0, -1)
 const ACC = 50
 const GRAVITY = 20
 const SPEED = 200
-const JUMP_HEIGHT =  -650
+const JUMP_HEIGHT =  -680
 var motion = Vector2()
 
 var dano=false
@@ -18,7 +18,7 @@ func _physics_process(delta):
 	motion.y += GRAVITY
 	
 	if Global.count_lives<=0:
-		$animatedSprite.Death
+		$AnimatedSprite.play("Death")
 	else:
 		
 		if Input.is_action_pressed("Attack_R"):
@@ -87,17 +87,17 @@ func _on_AnimatedSprite_animation_finished():
 		print ("D")
 	
 	if $AnimatedSprite.animation =="Death":
-		yield(get_tree().create_timer(0.3),"timeout")
+		yield(get_tree().create_timer(0.5),"timeout")
 		queue_free ()
-		get_tree().change_scene("res://Scena/Intro.tscn")
-	pass
+		get_tree().change_scene("res://Scena/GameOver.tscn")
+	
 
 
 func _on_damage_area_entered(area):
 	if area.is_in_group ("hit_s"):
 		
 		print("XXXXXXXXXXXXXXXX")
-		Global.count_lives-=1
+		Global.count_lives-=2
 		$damage/CollisionShape2D2.disabled=true
 		yield(get_tree().create_timer(0.4),"timeout")
 		$damage/CollisionShape2D2.disabled=false

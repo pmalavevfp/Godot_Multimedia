@@ -75,14 +75,18 @@ rotation = -0.000265155
 scale = Vector2( 2, 1 )
 collision_layer = 4
 script = ExtResource( 22 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." groups=["enemies"]]
-position = Vector2( 30.0065, -48.9841 )
-scale = Vector2( 3, 3 )
+position = Vector2( 0, -120 )
+scale = Vector2( 1.42418, 2.89938 )
 frames = SubResource( 1 )
 animation = "Walk"
 frame = 3
 playing = true
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 28.2549, -40 )
@@ -123,7 +127,6 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
 position = Vector2( -2.4899, 1.66914 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 3 )
 
 [node name="Att_R_ray" type="RayCast2D" parent="."]

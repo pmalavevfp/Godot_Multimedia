@@ -48,7 +48,8 @@ func _physics_process(_delta):
 			_flip()
 			motion.x=0
 		$Hit_R/CollisionShape2D.disabled=false
-		$AnimatedSprite.position.y=-71
+		$AnimatedSprite.position.y=-170
+		$AnimatedSprite.position.x=40
 		$AnimatedSprite.play("Attack1")
 		yield(get_tree().create_timer(0.9),"timeout")
 		$Hit_R/CollisionShape2D.disabled=true
@@ -66,7 +67,8 @@ func _physics_process(_delta):
 			_flip()
 			motion.x=0
 		$Hit_L/CollisionShape2D.disabled=false
-		$AnimatedSprite.position.y=-71
+		$AnimatedSprite.position.y=-170
+		$AnimatedSprite.position.x=40
 		$AnimatedSprite.play("Attack1")
 		yield(get_tree().create_timer(0.9),"timeout")
 		$Hit_L/CollisionShape2D.disabled=true
@@ -129,7 +131,8 @@ func _on_AnimatedSprite_animation_finished():
 			motion.x=-SPEED
 		else:
 			motion.x=SPEED
-		$AnimatedSprite.position.y=-49
+		$AnimatedSprite.position.y=-120
+		$AnimatedSprite.position.x=0
 		$AnimatedSprite.play("Walk")
 	
 	

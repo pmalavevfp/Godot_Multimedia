@@ -1,4 +1,5 @@
 extends Node2D
 
-var coins : int =0
-var keys : int =0
+
+func _on_Timer_timeout():
+	get_tree().change_scene("res://Scena/Intro.tscn")

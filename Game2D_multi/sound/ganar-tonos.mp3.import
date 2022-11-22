@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ganar-tonos.mp3-4a04d60010eb33ce5ad97f63f381e230.mp3str"
+
+[deps]
+
+source_file="res://sound/ganar-tonos.mp3"
+dest_files=[ "res://.import/ganar-tonos.mp3-4a04d60010eb33ce5ad97f63f381e230.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
