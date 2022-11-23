@@ -807,3 +807,6 @@ position = Vector2( 676, 538 )
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 40 )
 autoplay = true
+
+[node name="gain_lives2" parent="." instance=ExtResource( 29 )]
+position = Vector2( 852, 317 )

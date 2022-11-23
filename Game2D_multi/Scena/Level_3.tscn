@@ -884,3 +884,5 @@ position = Vector2( 588, 218 )
 
 [node name="Coins13" parent="." instance=ExtResource( 41 )]
 position = Vector2( 977, 208 )
+
+[connection signal="player_spacebar" from="Player" to="." method="_on_Player_player_spacebar"]

@@ -7,7 +7,13 @@ const SPEED = 200
 const JUMP_HEIGHT =  -680
 var motion = Vector2()
 
-var dano=false
+
+
+signal player_spacebar
+
+var interative_object=null
+
+
 var attack=false
 var health : int = 100
 
@@ -48,6 +54,10 @@ func _physics_process(delta):
 			animationPlayer.flip_h = true
 			animationPlayer.play("Run")
 			motion.x = max(motion.x - ACC, -SPEED)
+			
+		elif Input.is_action_pressed("ui_accept"):
+			emit_signal("player_spacebar", interative_object)
+			
 		else:
 			if attack==false:
 				animationPlayer.play("Idle")
@@ -104,3 +114,14 @@ func _on_damage_area_entered(area):
 		
 		
 	pass # Replace with function body.
+
+
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("interative_object"):
+		print ("TTTTTTTTTTTTTTTTTT")
+		interative_object=area
+
+
+func _on_Area2D_area_exited(area):
+	if area.is_in_group("interative_object"):
+		interative_object=null

@@ -70,7 +70,6 @@ extents = Vector2( 9.99989, 33.0012 )
 extents = Vector2( 9.00016, 31.4997 )
 
 [node name="Skeleton" type="KinematicBody2D" groups=["enemy"]]
-position = Vector2( -1, 0 )
 rotation = -0.000265155
 scale = Vector2( 2, 1 )
 collision_layer = 4
@@ -83,10 +82,11 @@ __meta__ = {
 position = Vector2( 0, -120 )
 scale = Vector2( 1.42418, 2.89938 )
 frames = SubResource( 1 )
-animation = "Walk"
-frame = 3
+animation = "Attack1"
+frame = 1
 playing = true
 centered = false
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 28.2549, -40 )
@@ -148,7 +148,7 @@ collision_layer = 2048
 collision_mask = 2304
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hit_L" groups=["hit_s"]]
-position = Vector2( -23.4941, -47.0009 )
+position = Vector2( -9.99403, -45.0053 )
 shape = SubResource( 4 )
 
 [node name="Hit_R" type="Area2D" parent="." groups=["hit_s"]]
@@ -156,7 +156,7 @@ collision_layer = 2048
 collision_mask = 2304
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hit_R" groups=["hit_s"]]
-position = Vector2( 75.5059, -44.4594 )
+position = Vector2( 65.006, -44.9655 )
 shape = SubResource( 5 )
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
