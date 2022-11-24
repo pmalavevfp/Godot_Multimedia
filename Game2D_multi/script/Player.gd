@@ -7,8 +7,6 @@ const SPEED = 200
 const JUMP_HEIGHT =  -680
 var motion = Vector2()
 
-
-
 signal player_spacebar
 
 var interative_object=null
@@ -31,7 +29,6 @@ func _physics_process(delta):
 			$hit_R/CollisionShape2D.disabled=false
 			animationPlayer.flip_h=false
 			$AnimatedSprite.play("Attack")
-			#$hit_R/CollisionShape2D.disabled=true
 			motion.x = min(motion.x + ACC, SPEED)
 			print("A")
 			attack=true
@@ -40,7 +37,6 @@ func _physics_process(delta):
 			$hit_L/CollisionShape2D.disabled=false
 			animationPlayer.play("Attack")
 			animationPlayer.flip_h=true
-			#$hit_L/CollisionShape2D.disabled=true
 			print("B")
 			attack=true
 			
@@ -50,7 +46,7 @@ func _physics_process(delta):
 			animationPlayer.play("Run")
 			motion.x = min(motion.x + ACC, SPEED)
 			
-		elif he_goes_left() && attack==false:
+		elif Input.get_action_strength("ui_left") && attack==false:
 			animationPlayer.flip_h = true
 			animationPlayer.play("Run")
 			motion.x = max(motion.x - ACC, -SPEED)
@@ -72,15 +68,8 @@ func _physics_process(delta):
 			if attack==false:
 				animationPlayer.play(" Jump")
 				$hit_R/CollisionShape2D.disabled=true
-				print("C")
 
 		motion = move_and_slide(motion, UP)
-
-func he_goes_right():
-	return Input.get_action_strength("ui_right")
-
-func he_goes_left():
-	return Input.get_action_strength("ui_left")
 
 func jump():
 	motion.y = JUMP_HEIGHT
@@ -92,9 +81,7 @@ func damage_player (damage):
 func _on_AnimatedSprite_animation_finished():
 	if animationPlayer.animation=="Attack":
 		yield(get_tree().create_timer(0.5),"timeout")
-		#animationPlayer.play("Idle")
 		attack=false
-		print ("D")
 	
 	if $AnimatedSprite.animation =="Death":
 		yield(get_tree().create_timer(0.5),"timeout")
@@ -105,20 +92,15 @@ func _on_AnimatedSprite_animation_finished():
 
 func _on_damage_area_entered(area):
 	if area.is_in_group ("hit_s"):
-		
-		print("XXXXXXXXXXXXXXXX")
 		Global.count_lives-=2
 		$damage/CollisionShape2D2.disabled=true
 		yield(get_tree().create_timer(0.4),"timeout")
 		$damage/CollisionShape2D2.disabled=false
-		
-		
-	pass # Replace with function body.
+
 
 
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("interative_object"):
-		print ("TTTTTTTTTTTTTTTTTT")
 		interative_object=area
 
 

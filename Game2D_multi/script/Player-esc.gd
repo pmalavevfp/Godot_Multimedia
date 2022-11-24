@@ -11,7 +11,6 @@ onready var animationPlayer = $AnimationPlayer
 var motion = Vector2()
  
 func _physics_process(delta):
-	# apply gravity to the player
 	motion.y += gravity
 	var friction = false
  
@@ -28,14 +27,3 @@ func _physics_process(delta):
 		animationPlayer.play("Sprite_Idle")
 		friction = true
  
-	"""if is_on_floor():
- 
-		if Input.is_action_just_pressed("ui_accept"):
-			motion.y = JUMP_H
-		if friction == true:
-			motion.x = lerp(motion.x, 0, 0.5)
-	else:
-		if friction == true:
-			motion.x = lerp(motion.x, 0, 0.01)
- 
-	motion = move_and_slide(motion, UP)"""

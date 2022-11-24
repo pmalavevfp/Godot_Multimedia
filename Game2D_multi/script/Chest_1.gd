@@ -5,10 +5,7 @@ func _ready():
 	$AnimatedSprite.play ("close")
 	
 func inspect ():
-	print ("TTTTTTTTTTTTTTTTTT")
 	OS.alert("Recibiras 30 coins y 30 lifes")
-#func _on_Chest_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	#if body.is_in_group("player"):
 	$AudioStreamPlayer.play()
 	$AnimatedSprite.play ("Open")
 	Global.count_coins +=30

@@ -84,6 +84,7 @@ position = Vector2( 24, -50 )
 scale = Vector2( 4, 3.5 )
 frames = SubResource( 1 )
 animation = "Walk"
+frame = 2
 playing = true
 offset = Vector2( 3, 0 )
 
@@ -126,7 +127,6 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
 position = Vector2( -1.15471, 1.66914 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 3 )
 
 [node name="Att_R_ray" type="RayCast2D" parent="."]

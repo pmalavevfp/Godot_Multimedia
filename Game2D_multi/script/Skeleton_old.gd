@@ -21,18 +21,12 @@ func _physics_process(_delta):
 
 	
 func _next_to_left_wall()->bool:
-	
-	#print ("l" +str($Left_Ray.is_colliding()))
 	return $Left_Ray.is_colliding()
 	
 func _next_to_right_wall()->bool:
-	
-	
-	#print (str($Right_Ray.is_colliding()))
 	return $Right_Ray.is_colliding()
 	
 func _floor_detection ()->bool:
-	#print ("FF"+str($AnimatedSprite/Floor_Detection.is_colliding()))
 	return $AnimatedSprite/Floor_Detection.is_colliding()
 	
 
